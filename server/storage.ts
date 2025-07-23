@@ -1,4 +1,6 @@
 import { users, mentions, alerts, type User, type InsertUser, type Mention, type InsertMention, type Alert, type InsertAlert } from "@shared/schema";
+import { db } from "./db";
+import { eq, and } from "drizzle-orm";
 
 export interface IStorage {
   // User methods
@@ -450,4 +452,103 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+// Database Storage Implementation
+export class DatabaseStorage implements IStorage {
+  async getUser(id: number): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user || undefined;
+  }
+
+  async getUserByEmail(email: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.email, email));
+    return user || undefined;
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const [user] = await db
+      .insert(users)
+      .values(insertUser)
+      .returning();
+    return user;
+  }
+
+  async getMentions(userId: number, keyword?: string, platform?: string): Promise<Mention[]> {
+    let query = db.select().from(mentions).where(eq(mentions.userId, userId));
+    
+    // Apply filters
+    const conditions = [eq(mentions.userId, userId)];
+    if (keyword) {
+      conditions.push(eq(mentions.keyword, keyword));
+    }
+    if (platform) {
+      conditions.push(eq(mentions.platform, platform));
+    }
+    
+    const results = await db.select().from(mentions).where(and(...conditions));
+    return results.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+  }
+
+  async createMention(insertMention: InsertMention): Promise<Mention> {
+    const [mention] = await db
+      .insert(mentions)
+      .values({
+        ...insertMention,
+        authorAvatar: insertMention.authorAvatar || null,
+        reach: insertMention.reach || null,
+        engagement: insertMention.engagement || null,
+      })
+      .returning();
+    return mention;
+  }
+
+  async getMentionStats(userId: number, keyword?: string): Promise<{
+    total: number;
+    positive: number;
+    neutral: number;
+    negative: number;
+    totalReach: number;
+  }> {
+    const conditions = [eq(mentions.userId, userId)];
+    if (keyword) {
+      conditions.push(eq(mentions.keyword, keyword));
+    }
+    
+    const userMentions = await db.select().from(mentions).where(and(...conditions));
+    
+    const stats = {
+      total: userMentions.length,
+      positive: userMentions.filter(m => m.sentiment === 'positive').length,
+      neutral: userMentions.filter(m => m.sentiment === 'neutral').length,
+      negative: userMentions.filter(m => m.sentiment === 'negative').length,
+      totalReach: userMentions.reduce((sum, m) => sum + (m.reach || 0), 0),
+    };
+    
+    return stats;
+  }
+
+  async getAlerts(userId: number): Promise<Alert[]> {
+    return await db.select().from(alerts).where(eq(alerts.userId, userId));
+  }
+
+  async createAlert(insertAlert: InsertAlert): Promise<Alert> {
+    const [alert] = await db
+      .insert(alerts)
+      .values({
+        ...insertAlert,
+        isActive: insertAlert.isActive ?? true,
+      })
+      .returning();
+    return alert;
+  }
+
+  async updateAlert(id: number, updates: Partial<InsertAlert>): Promise<Alert> {
+    const [alert] = await db
+      .update(alerts)
+      .set(updates)
+      .where(eq(alerts.id, id))
+      .returning();
+    return alert;
+  }
+}
+
+export const storage = new DatabaseStorage();
