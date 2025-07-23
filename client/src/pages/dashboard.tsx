@@ -11,7 +11,14 @@ import { TrendingUp } from "lucide-react";
 import type { Mention } from "@shared/schema";
 
 export default function Dashboard() {
-  const [currentKeyword, setCurrentKeyword] = useState("oncology");
+  const [currentKeyword, setCurrentKeyword] = useState("");
+  
+  // Available keywords from demo data
+  const availableKeywords = [
+    "oncology", "healthcare", "medical device", "telemedicine", 
+    "clinical trial", "pharmaceuticals", "biotech", "AI healthcare",
+    "precision medicine", "mental health", "digital health"
+  ];
   const [currentPlatform, setCurrentPlatform] = useState("twitter");
 
   const { data: mentions = [], isLoading } = useQuery<Mention[]>({
@@ -64,6 +71,7 @@ export default function Dashboard() {
           <SearchSection 
             currentKeyword={currentKeyword}
             onKeywordChange={setCurrentKeyword}
+            availableKeywords={availableKeywords}
           />
 
           <PlatformTabs 

@@ -91,6 +91,15 @@ export default function Login() {
               </div>
             </div>
 
+            <div className="mt-6 mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <h3 className="text-sm font-medium text-blue-800 mb-2">Demo Account</h3>
+              <p className="text-sm text-blue-600 mb-2">Use these credentials to explore the platform:</p>
+              <div className="text-sm text-blue-700">
+                <p><strong>Email:</strong> demo@sociapulse.com</p>
+                <p><strong>Password:</strong> demo123</p>
+              </div>
+            </div>
+
             <form className="mt-6 space-y-6" onSubmit={handleSubmit}>
               <div>
                 <Label htmlFor="email">Email address</Label>

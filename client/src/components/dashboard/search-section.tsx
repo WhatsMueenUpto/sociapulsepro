@@ -9,9 +9,10 @@ import { useToast } from "@/hooks/use-toast";
 interface SearchSectionProps {
   currentKeyword: string;
   onKeywordChange: (keyword: string) => void;
+  availableKeywords: string[];
 }
 
-export default function SearchSection({ currentKeyword, onKeywordChange }: SearchSectionProps) {
+export default function SearchSection({ currentKeyword, onKeywordChange, availableKeywords }: SearchSectionProps) {
   const [inputValue, setInputValue] = useState(currentKeyword);
   const { toast } = useToast();
 
@@ -49,6 +50,23 @@ export default function SearchSection({ currentKeyword, onKeywordChange }: Searc
                   placeholder="Enter keyword to monitor..."
                 />
                 <Search className="absolute inset-y-0 right-0 flex items-center pr-4 w-5 h-5 text-gray-400" />
+              </div>
+              {/* Quick keyword suggestions */}
+              <div className="mt-3">
+                <p className="text-sm text-gray-600 mb-2">Popular keywords:</p>
+                <div className="flex flex-wrap gap-2">
+                  {availableKeywords.slice(0, 6).map((keyword) => (
+                    <Button
+                      key={keyword}
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setInputValue(keyword)}
+                      className="text-xs"
+                    >
+                      {keyword}
+                    </Button>
+                  ))}
+                </div>
               </div>
             </div>
             <div className="flex space-x-2">

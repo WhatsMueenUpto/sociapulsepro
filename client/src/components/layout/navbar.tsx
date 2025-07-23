@@ -31,9 +31,9 @@ export default function Navbar() {
               <Link href="/login" className="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-colors">
                 Login
               </Link>
-              <Link href="/dashboard">
+              <Link href="/signup">
                 <Button className="bg-primary hover:bg-primary/90 text-white">
-                  Dashboard
+                  Sign Up
                 </Button>
               </Link>
             </div>
@@ -65,9 +65,9 @@ export default function Navbar() {
               <Link href="/login" className="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-colors">
                 Login
               </Link>
-              <Link href="/dashboard" className="px-3 py-2">
+              <Link href="/signup" className="px-3 py-2">
                 <Button className="w-full bg-primary hover:bg-primary/90 text-white">
-                  Dashboard
+                  Sign Up
                 </Button>
               </Link>
             </div>
