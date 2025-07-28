@@ -35,7 +35,7 @@ export default function Signup() {
       // Demo signup - just navigate to dashboard
       if (email && password) {
         toast({
-          title: "Welcome to SociaPulse!",
+          title: "Welcome to Dr. Kesha!",
           description: "Your account has been created successfully.",
         });
         setLocation("/dashboard");
@@ -61,8 +61,8 @@ export default function Signup() {
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center items-center mb-6">
-          <TrendingUp className="w-8 h-8 text-primary mr-3" />
-          <span className="text-3xl font-bold text-gray-900">SociaPulse</span>
+          <img src="/logo.jpeg" alt="Dr. Kesha Logo" className="w-10 h-10 object-contain mr-3" />
+          <span className="text-3xl font-bold text-gray-900">Dr. Kesha</span>
         </div>
         <h2 className="text-center text-3xl font-bold text-gray-900">
           Create your account

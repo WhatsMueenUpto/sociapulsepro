@@ -12,8 +12,8 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <TrendingUp className="w-8 h-8 text-primary mr-3" />
-              <span className="text-2xl font-bold text-gray-900">SociaPulse</span>
+              <img src="/logo.jpeg" alt="Dr. Kesha Logo" className="w-20 h-20 object-contain mr-3" />
+              <span className="text-2xl font-bold text-gray-900">Dr. Kesha</span>
             </Link>
           </div>
           

@@ -2,9 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertUserSchema, insertMentionSchema, insertAlertSchema } from "@shared/schema";
-import { z } from "zod";
-
-export async function registerRoutes(app: Express): Promise<Server> {
+import { db } from "./db-local";export async function registerRoutes(app: Express): Promise<Server> {
   // User routes
   app.post("/api/auth/login", async (req, res) => {
     try {

@@ -9,8 +9,8 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center mb-6">
-              <TrendingUp className="w-8 h-8 text-primary mr-3" />
-              <span className="text-2xl font-bold">SociaPulse</span>
+              <img src="/logo.jpeg" alt="Dr. Kesha Logo" className="w-8 h-8 object-contain mr-3" />
+              <span className="text-2xl font-bold">Dr. Kesha</span>
             </div>
             <p className="text-gray-400 mb-6">
               Monitor your brand and track conversations across social media with powerful analytics and insights.
@@ -60,7 +60,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-800 mt-12 pt-8 text-center">
-          <p className="text-gray-400">&copy; 2024 SociaPulse. All rights reserved.</p>
+          <p className="text-gray-400">&copy; 2024 Dr. Kesha. All rights reserved.</p>
         </div>
       </div>
     </footer>

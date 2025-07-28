@@ -1,5 +1,5 @@
-import { db } from "./db";
-import { users, mentions, alerts } from "@shared/schema";
+import { db } from "./db-local";
+import { users, mentions, alerts } from "../shared/schema-sqlite";
 
 export async function seedDatabase() {
   console.log("Seeding database with demo data...");

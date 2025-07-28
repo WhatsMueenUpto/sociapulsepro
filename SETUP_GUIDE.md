@@ -1,4 +1,4 @@
-# Quick Setup Guide for SociaPulse
+# Quick Setup Guide for Dr. Kesha
 
 ## Step-by-Step Local Installation
 

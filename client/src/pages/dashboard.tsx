@@ -9,10 +9,20 @@ import SocialFeed from "@/components/dashboard/social-feed";
 import { Bell, User } from "lucide-react";
 import { TrendingUp } from "lucide-react";
 import type { Mention } from "@shared/schema";
+import { Link, useLocation } from "wouter";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Dashboard() {
   const [currentKeyword, setCurrentKeyword] = useState("");
-  
+  const [, setLocation] = useLocation();
+
   // Available keywords from demo data
   const availableKeywords = [
     "oncology", "healthcare", "medical device", "telemedicine", 
@@ -36,6 +46,13 @@ export default function Dashboard() {
     queryKey: ["/api/mentions/stats", { keyword: currentKeyword }],
   });
 
+  const handleLogout = () => {
+    // Clear any user authentication tokens or session data
+    localStorage.removeItem("authToken"); 
+    // Redirect to login page
+    setLocation("/login");
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Dashboard Header */}
@@ -43,21 +60,30 @@ export default function Dashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <TrendingUp className="w-8 h-8 text-primary mr-3" />
-              <span className="text-2xl font-bold text-gray-900">SociaPulse</span>
+              <img src="/logo.jpeg" alt="Dr. Kesha Logo" className="w-21 h-10 object-contain mr-3" />
+              
             </div>
             <div className="flex items-center space-x-4">
               <button className="text-gray-500 hover:text-gray-700 transition-colors">
                 <Bell className="w-5 h-5" />
               </button>
-              <div className="flex items-center space-x-2">
-                <img 
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=40&h=40" 
-                  alt="Profile" 
-                  className="w-8 h-8 rounded-full"
-                />
-                <span className="text-sm font-medium text-gray-700">John Doe</span>
-              </div>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <div className="flex items-center space-x-2 cursor-pointer">
+                    <img 
+                      src="https://media.licdn.com/dms/image/v2/D4E03AQGNI6D5bUsxNg/profile-displayphoto-shrink_200_200/B4EZWA0lWpHgAc-/0/1741623023515?e=1756339200&v=beta&t=1fLPU-mQRydLL1nEJqb218a4ffzLaB_GbFxacQgZMCY" 
+                      alt="Profile" 
+                      className="w-8 h-8 rounded-full"
+                    />
+                    <span className="text-sm font-medium text-gray-700">Dr.Kesha</span>
+                  </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56">
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
         </div>
@@ -95,3 +121,5 @@ export default function Dashboard() {
     </div>
   );
 }
+
+

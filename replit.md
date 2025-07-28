@@ -1,8 +1,8 @@
-# SociaPulse - Social Media Monitoring Platform
+# Dr. Kesha - Social Media Monitoring Platform
 
 ## Overview
 
-SociaPulse is a comprehensive social media monitoring platform that allows users to track brand mentions, analyze sentiment, and monitor conversations across multiple social media platforms. The application features real-time mention tracking, analytics dashboards, and customizable alerts for keyword monitoring.
+Dr. Kesha is a comprehensive social media monitoring platform that allows users to track brand mentions, analyze sentiment, and monitor conversations across multiple social media platforms. The application features real-time mention tracking, analytics dashboards, and customizable alerts for keyword monitoring.
 
 ## User Preferences
 

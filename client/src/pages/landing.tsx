@@ -65,21 +65,21 @@ export default function Landing() {
     {
       name: "Sarah Johnson",
       title: "Marketing Director, TechFlow",
-      content: "SociaPulse has transformed our brand monitoring strategy. We're now able to respond to customer feedback in real-time and have seen a 40% increase in positive sentiment.",
+      content: "Dr. Kesha has transformed our brand monitoring strategy. We're now able to respond to customer feedback in real-time and have seen a 40% increase in positive sentiment.",
       avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b550?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=80&h=80",
       rating: 5
     },
     {
       name: "Michael Chen",
       title: "CEO, StartupXYZ",
-      content: "The insights we get from SociaPulse are invaluable. It's helped us identify key influencers in our industry and has significantly improved our social media ROI.",
+      content: "The insights we get from Dr. Kesha are invaluable. It's helped us identify key influencers in our industry and has significantly improved our social media ROI.",
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=80&h=80",
       rating: 5
     },
     {
       name: "Emma Rodriguez",
       title: "Brand Manager, GlobalCorp",
-      content: "Easy to use interface with powerful analytics. SociaPulse gives us the competitive intelligence we need to stay ahead in our market.",
+      content: "Easy to use interface with powerful analytics. Dr. Kesha gives us the competitive intelligence we need to stay ahead in our market.",
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=80&h=80",
       rating: 5
     }
@@ -301,7 +301,7 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">What our customers say</h2>
-            <p className="text-lg text-gray-600">See how SociaPulse is helping businesses grow their brand awareness</p>
+            <p className="text-lg text-gray-600">See how Dr. Kesha is helping businesses grow their brand awareness</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (

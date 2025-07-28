@@ -1,4 +1,4 @@
-# SociaPulse - Social Media Monitoring Platform
+# Dr. Kesha - Social Media Monitoring Platform
 
 A comprehensive social listening and analytics platform for monitoring brand mentions across social media platforms.
 
