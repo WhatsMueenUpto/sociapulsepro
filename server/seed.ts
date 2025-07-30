@@ -330,5 +330,53 @@ export async function seedDatabase() {
     }
   }
 
-  console.log("Database seeded successfully!");
+  export async function seedDatabase() {
+  console.log("Seeding database with demo data...");
+  try {
+    // Create demo user
+    const [demoUser] = await db
+      .insert(users)
+      .values({
+        username: "demo",
+        email: "demo@sociapulse.com",
+        password: "demo123",
+      })
+      .onConflictDoNothing()
+      .returning();
+
+    const userId = demoUser?.id || 1;
+
+    // Create comprehensive demo mentions for multiple keywords and platforms
+    const demoMentions = [
+      // ... (your existing demoMentions array content) ...
+    ];
+
+    // Insert mentions in batches to avoid conflicts
+    for (const mention of demoMentions) {
+      try {
+        await db.insert(mentions).values(mention).onConflictDoNothing();
+      } catch (error) {
+        console.log(`Skipping existing mention: ${mention.content.slice(0, 50)}...`);
+      }
+    }
+
+    // Create demo alerts
+    const demoAlerts = [
+      // ... (your existing demoAlerts array content) ...
+    ];
+
+    for (const alert of demoAlerts) {
+      try {
+        await db.insert(alerts).values(alert).onConflictDoNothing();
+      } catch (error) {
+        console.log(`Skipping existing alert: ${alert.keyword}`);
+      }
+    }
+
+    console.log("Database seeded successfully!");
+  } catch (error) {
+    console.error("Error seeding database:", error);
+  }
+}
+
 }
