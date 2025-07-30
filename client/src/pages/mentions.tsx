@@ -37,7 +37,8 @@ export default function Mentions() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <img src="/logo.jpeg" alt="Dr. Kesha Logo" className="w-21 h-10 object-contain mr-3" />
+              <img src="/logo.jpeg" alt="Dr. Kesha Logo" className="w-8 h-8 object-contain mr-3" />
+              <span className="text-2xl font-bold text-gray-900">Dr. Kesha</span>
             </div>
             <div className="flex items-center space-x-4">
               <button className="text-gray-500 hover:text-gray-700 transition-colors">
@@ -45,11 +46,11 @@ export default function Mentions() {
               </button>
               <div className="flex items-center space-x-2">
                 <img 
-                  src="https://media.licdn.com/dms/image/v2/D4E03AQGNI6D5bUsxNg/profile-displayphoto-shrink_200_200/B4EZWA0lWpHgAc-/0/1741623023515?e=1756339200&v=beta&t=1fLPU-mQRydLL1nEJqb218a4ffzLaB_GbFxacQgZMCY" 
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=40&h=40" 
                   alt="Profile" 
                   className="w-8 h-8 rounded-full"
                 />
-                <span className="text-sm font-medium text-gray-700">Dr.Kesha</span>
+                <span className="text-sm font-medium text-gray-700">John Doe</span>
               </div>
             </div>
           </div>
