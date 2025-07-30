@@ -14,7 +14,7 @@ export default function Mentions() {
   const [platformFilter, setPlatformFilter] = useState("all");
 
   const { data: allMentions = [], isLoading } = useQuery<Mention[]>({
-    queryKey: ["/api/mentions"],
+    queryKey: ["https://sociapulsepro-backend.onrender.com/api/mentions"],
   });
 
   const filteredMentions = allMentions.filter(mention => {
